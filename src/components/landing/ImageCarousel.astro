@@ -1,11 +1,14 @@
 ---
+// Import the Image component from astro:assets
 import { Image } from "astro:assets";
-// Import All images you need
+// Import all images you need
 import A from "../../images/a.png";
 import B from "../../images/b.png";
 import C from "../../images/c.png";
 import D from "../../images/d.png";
 import E from "../../images/e.png";
+
+// Create an array of image objects with src and alt text
 const images = [
   { src: A, alt: "Alt text for image A" },
   { src: E, alt: "Alt text for image E" },
@@ -19,19 +22,24 @@ const images = [
   class="marquee-container border-y py-12 lg:py-16 2xl:py-32 border-zinc-200 dark:border-zinc-700 bg-stripes overflow-hidden"
 >
   <div class="marquee flex gap-2">
-    {
-      [...images, ...images].map((image, index) => (
-        <div class="marquee-item flex-none relative lg:aspect-[9/7] bg-zinc-100 dark:bg-zinc-800 shadow overflow-hidden w-100 rounded-lg lg:w-150 h-64 lg:h-96">
-          <Image
-            alt={image.alt}
-            class="absolute inset-0 h-full w-full object-cover"
-            src={image.src}
-          />
-        </div>
-      ))
-    }
+    {[
+      ...images,
+      ...images, // Duplicate images to create a seamless loop
+    ].map((image, index) => (
+      <div
+        key={index}
+        class="marquee-item flex-none relative lg:aspect-[9/7] bg-zinc-100 dark:bg-zinc-800 shadow overflow-hidden w-100 rounded-lg lg:w-150 h-64 lg:h-96"
+      >
+        <Image
+          alt={image.alt}
+          class="absolute inset-0 h-full w-full object-cover"
+          src={image.src}
+        />
+      </div>
+    ))}
   </div>
 </div>
+
 <script type="module">
   // Function to initialize and run the marquee animation
   function setupMarquee() {
