@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "astro dev --legacy-peer-deps",
+    "start": "astro dev --legacy-peer-deps",
+    "build": "astro build --legacy-peer-deps",
+    "preview": "astro preview --legacy-peer-deps",
+    "astro": "astro --legacy-peer-deps"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.1",
